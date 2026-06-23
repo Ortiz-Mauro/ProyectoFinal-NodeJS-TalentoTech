@@ -1,2 +1,2 @@
-cambiar rama con switch -c dev
-git
+node_modules    
+.env

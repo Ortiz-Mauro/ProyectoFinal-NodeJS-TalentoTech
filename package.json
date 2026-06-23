@@ -1,0 +1,23 @@
+{
+  "name": "proyectofinal",
+  "version": "1.0.0",
+  "description": "cambiar rama con switch -c dev\r git",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node -- watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ortiz-Mauro/ProyectoFinal-NodeJS-TalentoTech.git"
+  },
+  "keywords": [],
+  "author": "Ortiz Mauro",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Ortiz-Mauro/ProyectoFinal-NodeJS-TalentoTech/issues"
+  },
+  "homepage": "https://github.com/Ortiz-Mauro/ProyectoFinal-NodeJS-TalentoTech#readme"
+}
