@@ -1,7 +1,7 @@
 {
   "name": "proyectofinal",
   "version": "1.0.0",
-  "description": "cambiar rama con switch -c dev\r git",
+  "description": "Proyecto Final de NodeJS - Talento Tech",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

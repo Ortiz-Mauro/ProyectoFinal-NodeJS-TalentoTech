@@ -1,4 +1,7 @@
-//funciones que llaman al modelo
-import dotenv from 'dotenv';
-dotenv.config();
-// seeder.js????????? que es
+import app from "./app.js";
+
+const PORT = 3000;
+
+app.listen(PORT, ()=>{
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
