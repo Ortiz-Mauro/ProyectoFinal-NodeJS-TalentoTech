@@ -14,9 +14,9 @@ app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
-app.use('/api/products', productsRoutes);
-
 app.use('/auth', authRoutes);
+
+app.use('/api/products', productsRoutes);
 
 app.use(error404);
 
