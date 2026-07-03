@@ -1,22 +1,24 @@
-//las rutas con sus metodos http
-
 import express from 'express';
 import { 
     createProduct,
-    getProducts
+    getProducts,
+    getProduct,
+    deleteProduct
 } from '../controllers/products.controller.js';
 
 import { authentication } from '../middlewares/authentication.middleware.js';
-const router = express.Router() // Instanciamos nuestro mini-recepcionista
 
+import { productValidator, idValidator } from '../middlewares/productValidator.middleware.js';
 
-router.get('/inicio', (req, res)=>{
-    res.send("<h1>Bienvenido a mi E-Commerce</h1>");
-})
-
-router.post('/', authentication, createProduct);
-
+const router = express.Router()
+//Definimos las rutas, si esta autenticado ejecuta la funcion correspondiente del controlador.
 router.get('/', authentication, getProducts);
 
-// EXPORTAR: Enviamos hacia el exterior para que index.js lo pueda usar
+router.get('/:id', authentication, idValidator, getProduct);
+
+router.post('/create', authentication, productValidator, createProduct);
+
+router.delete('/:id', authentication, idValidator, deleteProduct);
+
+//Enviamos hacia el exterior para que app.js lo pueda usar
 export default router;

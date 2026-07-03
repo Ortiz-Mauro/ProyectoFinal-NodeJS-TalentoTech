@@ -1,10 +1,12 @@
 import { generateToken } from "../utils/token.generator.js";
 
 const userDefault = {
+    id: 1,
     email: "123@123.com",
     password: "1234"
 };
 
+//manejo la respuesta de la ruta para login
 export const login = async (req, res) => {
     const {email, password} = req.body;
 
@@ -13,5 +15,5 @@ export const login = async (req, res) => {
         const token = generateToken(userDefault);
         return res.status(200).json({token: token});
     }
-    return res.status(401).json({message: "Credenciales incorrectas." })
+    return res.status(401).json({error: "Credenciales incorrectas." })
 }
