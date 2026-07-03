@@ -26,7 +26,9 @@ export const getAllProducts = async () => {
 // traer producto por id
 export const getProductById = async (id) =>{
     try{
-        const productDoc = await getDoc(doc(coleccionProductos, id));// el doc lo que hace es traer la referencia exacta de donde esta el registro
+        // NORMALIZACION: Forzamos que el ID siempre sea un String(FireStore guarda los id como string, si le paso un numero me va a tirar error)
+        const IdNormalizado = String(id); 
+        const productDoc = await getDoc(doc(coleccionProductos, IdNormalizado));// el doc lo que hace es traer la referencia exacta de donde esta el registro
         if(!productDoc.exists()){
             return null;
         }
@@ -57,7 +59,9 @@ export const addNewProduct = async (producto)=>{
 
 export const deleteProductById = async(id)=>{
     try{
-        await deleteDoc(doc(coleccionProductos, id));
+        // NORMALIZACION: Forzamos que el ID siempre sea un String
+        const IdNormalizado = String(id); 
+        await deleteDoc(doc(coleccionProductos, IdNormalizado));
         return true;//retorno true si se borro el producto
     }
 
