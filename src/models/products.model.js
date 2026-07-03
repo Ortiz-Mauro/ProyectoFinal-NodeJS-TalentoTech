@@ -11,7 +11,7 @@ export const getAllProducts = async () => {
 
         querySnapshot.forEach((producto)=>{
         //el id lo pongo a mano y todo el resto del contenido de la base de datos usando '...'
-        productos.push({ id: producto.id, ...producto.data() });
+        productos.push({ ...producto.data(), id: producto.id });
         });
 
         return productos;
