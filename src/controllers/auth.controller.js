@@ -5,6 +5,7 @@ const userDefault = {
     password: "1234"
 };
 
+//manejo la respuesta de la ruta para login
 export const login = async (req, res) => {
     const {email, password} = req.body;
 
