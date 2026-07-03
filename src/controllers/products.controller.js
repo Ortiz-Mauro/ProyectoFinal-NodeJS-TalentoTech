@@ -11,9 +11,9 @@ export const getProducts = async (req, res) =>{
         const productos = await getAllProducts();
         return res.json(productos);
     }
+
     catch (error){
         console.error("Error al obtener productos:", error);
-
         return res.status(500).json({
             error: "Hubo un problema al obtener los productos"
         });
@@ -21,7 +21,7 @@ export const getProducts = async (req, res) =>{
 };
 
 //manejo la respuesta de la ruta para obtener un producto por id
- export const  getProduct = async (req, res) =>{
+ export const getProduct = async (req, res) =>{
     try{
         const id = req.params.id;
         const producto = await getProductById(id);
@@ -34,9 +34,9 @@ export const getProducts = async (req, res) =>{
 
         return res.json(producto);
     }
+
     catch (error){
         console.error("Error al obtener producto:", error);
-
         return res.status(500).json({ 
             error: "Hubo un problema al obtener el producto" 
         });
@@ -46,12 +46,10 @@ export const getProducts = async (req, res) =>{
 //manejo la respuesta de la ruta para crear un producto
 export const createProduct  = async (req, res)=>{
     try{
-        if (!req.body.title || !req.body.price || !req.body.category) {
-            return res.status(400).json({ error: "Faltan datos obligatorios." });
-        }
         await addNewProduct(req.body);
         return res.status(201).json({ message: "Producto creado exitosamente." });
     }
+
     catch(error){
         console.error("Hubo un error: ", error);
         return res.status(500).json({ 
@@ -64,11 +62,21 @@ export const createProduct  = async (req, res)=>{
 export const deleteProduct = async (req, res) =>{
     try{
         const id = req.params.id;
+        
+        // Verificar si el producto existe antes de eliminarlo
+        const producto = await getProductById(id);
+        if (!producto) {
+            return res.status(404).json({ 
+                error: "Producto no encontrado"
+            });
+        };
+
         await deleteProductById(id);
         return res.json({ 
             message: "Producto eliminado exitosamente." 
         });
     }
+
     catch(error){
         console.error("Hubo un error: ", error);
         return res.status(500).json({ 
